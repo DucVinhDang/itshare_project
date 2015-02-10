@@ -1,0 +1,262 @@
+<%- model_class = Author -%>
+<%- model_class = Category -%>
+<%- model_class = Book -%>
+
+<!-- SLIDE NEW EBOOKS -->
+
+<div class="row home-slide-row">
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+	  <ol class="carousel-indicators">
+	    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+	  </ol>
+
+	  <!-- Wrapper for slides -->
+	<div class="carousel-inner" role="listbox">
+		<% @books.each do |book| 
+	  		if book.id == 1 %>
+		    	<div class="item active">
+		    <% else %> 
+		   		<div class="item">
+		   	<% end %>
+				<div class="col-md-8 col-md-offset-2">
+					<div class="row div-object-slide">
+						<div class="col-md-3 div-object-slide-left">
+							<%= link_to image_tag(book.image, alt:"image"), book %>
+						</div>
+						<div class="col-md-6 div-object-slide-center">
+							<div class="div-object-slide-center-sub">
+								<h2><%= book.name %></h2>
+								<p><%= book.description %></p>
+							</div>
+						</div>
+						<div class="col-md-3 div-object-slide-right">
+							<div class="col-md-12 div-object-slide-right-title">
+								<%= Author.find(book.author_id).name %>
+							</div>
+							<div class="col-md-7 div-object-slide-right-info-left">
+								<p>Year:</p>
+								<p>Pages:</p>
+								<p>Language:</p>
+								<p>File size:</p>
+								<p>File format:</p>
+							</div>
+							<div class="col-md-5 div-object-slide-right-info-right">
+								<p><%= book.year %></p>
+								<p><%= book.pages %></p>
+								<p><%= book.language %></p>
+								<p><%= book.file_size %> MB</p>
+								<p><%= book.file_format %></p>
+							</div>
+							<span class="glyphicon glyphicon-save" aria-hidden="true"> <%= book.download %> downloaded</span>
+							
+							<div class="col-md-12 div-object-slide-right-rating">
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+							</div>
+
+							<a class="btn btn-danger btn-download" href="#" role="button">Download</a>
+						</div>
+					</div>
+				</div>      
+		    </div>
+		<% end %>
+	</div>
+
+	  <!-- Controls -->
+	    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+	    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	    	<span class="sr-only">Previous</span>
+	    </a>
+	    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+	    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	    	<span class="sr-only">Next</span>
+	    </a>
+	</div>
+</div>
+
+<div class="container main-body">
+	<div class="col-md-2 main-body-left">
+		<%= render "shared/leftbar" %>
+	</div>
+
+	<div class="col-md-10 main-body-right">
+		<!-- New eBooks -->
+		<div class="row main-body-right-sub-area-1">
+			<div class="col-md-12">
+				<div class="categories-title"><p>New eBooks</p></div>
+			</div>
+			<% @books.each do |book| %>
+				<div class="col-md-3">
+					<div class="sub-books">
+						<%= link_to image_tag(book.image, alt:"image"), book %>
+						<p><%= book.name %></p>
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+						<a class="btn btn-danger btn-download" href="#" role="button">Download</a>
+					</div>
+				</div>	
+			<% end %>
+
+		</div>
+
+		<!-- Last Update eBooks -->
+		<div class="row main-body-right-sub-area-1">
+			<div class="col-md-12">
+				<div class="categories-title"><p>Last Update eBooks</p></div>
+			</div>
+			<% @books.each do |book| %>
+				<div class="col-md-3">
+					<div class="sub-books">
+						<%= link_to image_tag(book.image, alt:"image"), book %>
+						<p><%= book.name %></p>
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+						<a class="btn btn-danger btn-download" href="#" role="button">Download</a>
+					</div>
+				</div>	
+			<% end %>
+		</div>
+
+		<div class="row main-body-right-sub-area-2">
+			<div class="col-md-12">
+				<div class="categories-title"><p>Top Download eBooks</p></div>
+			</div>
+			<div class="col-md-6">
+				<div class="row sub-books">
+					<div class="col-md-4">
+						<img src="learning_angularjs_animations.jpg">
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<h3>Learning AngularJS Animations</h3>
+						<p>AngularJS is an extensive framework used to make full-blown websites with minimal code. Animations in AngularJS are achieved through CSS3 transitions, CSS animations, and JavaScript. AngularJS allows you to create animations with outstanding effects. There are a variety of effects that can be integrated with AngularJS and different ways to achieve the same result...</p>
+						<button type="button" class="btn btn-primary">Learn more</button>	
+					</div>
+				</div>
+			</div>	
+
+			<div class="col-md-6">
+				<div class="row sub-books">
+					<div class="col-md-4">
+						<img src="learning_alfresco_web_scripts.jpg">
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<h3>Learning Alfresco Web Scripts</h3>
+						<p>Alfresco web scripts is a key feature of the Alfresco enterprise content management system that enables other applications to interact with the Alfresco repository in a secure way. This book will help you understand everything you need to know about web scripts so that you can practically apply them to your own projects. 	You will begin by learning the basics of Alfresco web scripts...</p>
+						<button type="button" class="btn btn-primary">Learn more</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="row sub-books">
+					<div class="col-md-4">
+						<img src="learning_neo4j.jpg">
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<h3>Learning Neo4j</h3>
+						<p>Learning Neo4j provides you with a step-by-step approach of adopting Neo4j, the world's leading graph database. This book includes a lot of background information, helps you grasp the fundamental concepts behind this radical new way of dealing with connected data, and will give you lots of examples of use cases and environments where a graph database would be a great fit. Starting with a brief introduction to graph theory, this book will...</p>
+						<button type="button" class="btn btn-primary">Learn more</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="row sub-books">
+					<div class="col-md-4">
+						<img src="mastering_javascript_design_patterns.jpg">
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<h3>Mastering JavaScript Design Patterns</h3>
+						<p>In the first part of the book, we start off with an introduction to design patterns, and then move on to creating classical structures that are used to organize code. Next, we look at the creational, structural, and behavioral patterns. The second part of the book dives into patterns used for functional programming, model view patterns, patterns to build web applications, and messaging patterns...</p>
+						<button type="button" class="btn btn-primary">Learn more</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="row sub-books">
+					<div class="col-md-4">
+						<img src="unity_game_development_blueprints.jpg">
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<h3>Unity Game Development Blueprints</h3>
+						<p>Unity 3D is a powerful and popular game development tool that has taken game developers by storm. It is a cross-platform game engine, enabling you to write your game once and then port it to PCs, consoles, and even the Web, making it a great choice for both indie and AAA developers. Unity combines serious power with a friendly, easy-to-use interface. Unity Game Development Blueprints takes...</p>
+						<button type="button" class="btn btn-primary">Learn more</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="row sub-books">
+					<div class="col-md-4">
+						<img src="web_app_testing_using_knockout.js.jpg">
+						<div class="sub-books-rating">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<h3>Web App Testing Using Knockout.JS</h3>
+						<p>As modern web applications grow in complexity and features, developers need tools and frameworks to deliver and maintain solutions with high quality standards. Knockout.JS is an emerging JavaScript presentation framework that promotes a solid solution design in combination with Jasmine, a well-known unit testing library. They both ensure rapid development and maintainability over time...</p>
+						<button type="button" class="btn btn-primary">Learn more</button>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container-fluid footer-container-fluid">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3 footer-above">
+			<ul class="nav nav-pills" style="text-align: center">
+				<li><%= link_to "Home", root_path %></li> <!-- HOME -->
+	          	<li class="dropup">
+			     	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu<span class="caret"></span></a>
+			        <ul class="dropdown-menu" role="menu">
+			        	<% @categories.each do |category| %>
+			        		<li><%= link_to category.name, categories_path %></li>
+			        		<% if category.name == "Web" || category.name == "Management" %>
+			        			<li class="divider"></li>
+			        		<% end
+			        	end %>
+			      	</ul>
+	        	</li>
+	          	<li><%= link_to "New eBooks", "/new_ebooks" %></li> <!-- NEW EBOOKS -->
+	          	<li><%= link_to "Popular eBooks", "/popular_ebooks" %></li>
+	          	<li><%= link_to "Last Update", root_path %></li> <!-- LAST UPDATE -->
+	          	<li><%= link_to "Feedback", root_path %></li> <!-- FEEDBACK -->
+	          	<li><%= link_to "About Us", root_path %></li> <!-- ABOUT US -->
+			</ul>
+		</div>
+
+		<div class ="col-md-8 col-md-offset-2 footer-below">
+			<div class="row">
+				<div class="col-md-5">
+					<blockquote>
+					  <p>Giấy phép hoạt động trên Internet số 378/GP - BTTTT Hà Nội, ngày 03-02-2015.</p>
+					  <p>Điện thoại: 04-3736-6491. Fax: 04-3736-6490</p>
+					  <p>Email: ducvinh0812@gmail.com</p>
+					  <p> Website: http://www.itshare.vn</p>
+					  <p>Trụ sở chính: Số 2 (nhà 48) Giảng Võ, Quận Đống Đa, Hà Nội</p>
+					</blockquote>
+				</div>
+
+				<div class="col-md-5 col-md-offset-2">
+					<blockquote class="blockquote-reverse">
+					  <p>Đơn vị quảng cáo: Admicro, FSoft, Viettel, Apple, Google,...</p>
+					  <p>Email: quangcao@admicro.vn</p>
+					  <p>Hỗ trợ và CSKH: 01268 269 779 (Ms. Thơm)</p>
+					  <p>Các mảng: iOS - Android - Ruby On Rails - Wordpress - Games.</p>
+					</blockquote>
+				</div>
+
+				<div class="col-md-12 col-copyright">
+					<div class="row">
+						<p>© Copyright 2015 ITShare.vn, All rights reserved</p>
+						<p>® ITShare giữ bản quyền nội dung trên website này.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

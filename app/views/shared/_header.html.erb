@@ -1,0 +1,93 @@
+<script type="text/javascript">
+$(function () {
+  var $win = $(window);
+  $win.resize(function () {
+      if ($win.width() > 768)
+          $(".navbar-nav > .dropdown > a").attr("data-toggle", "");
+      else
+          $(".navbar-nav > .dropdown > a").attr("data-toggle", "dropdown");
+  }).resize();
+  $(".dropdown-menu").find("input, button").each(function () {
+      $(this).click(function (e) {
+          e.stopPropagation();
+      });
+  });
+});
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+
+<div class="header-menu-top">
+  <div class="container">
+    <div class="pull-right">
+      <ul class="nav nav-tabs">
+        <li role="presentation"><a data-placement="bottom" title="Sign in your account" href="#" data-toggle="tooltip" data-placement="bottom">Sign in</a></li>
+        <li role="presentation"><a data-placement="bottom" title="Sign up new account" href="#" data-toggle="tooltip" data-placement="bottom">Sign up?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <div class="jumbotron header-banner">
+      <p class="p-title"><%= link_to "ITShare", root_path %></p>
+      <p class="p-subtitle"><%= link_to "The world of IT ebooks...", root_path %></p>
+  </div>
+  
+
+<nav class="navbar navbar-default header-navbar">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "ITShare", root_path, class: "navbar-brand header-navbar-brand" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse header-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+          <li><%= link_to "Home", root_path %></li> <!-- HOME -->
+          <li class="dropdown"> <!-- MENU -->
+              <%= link_to "Menu" %>
+              <ul class="dropdown-menu" role="menu">
+                <!-- <li><a href="#">Basic</a></li>
+                <li><a href="#">Mobile</a></li>
+                <li><a href="#">Web</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Database</a></li>
+                <li><a href="#">Management</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Games</a></li> -->
+                <% @categories.each do |category| %>
+                  <li><%= link_to category.name, categories_path %></li>
+                  <% if category.name == "Web" || category.name == "Management" %>
+                    <li class="divider"></li>
+                  <% end
+                end %>
+              </ul>
+            </li>
+          <li><%= link_to "New eBooks", root_path %></li> <!-- NEW EBOOKS -->
+          <li><%= link_to "Popular eBooks", "/popular_ebooks" %></li>
+          <li><%= link_to "Last Update", root_path %></li> <!-- LAST UPDATE -->
+          <li><%= link_to "Feedback", root_path %></li> <!-- FEEDBACK -->
+          <li><%= link_to "About Us", root_path %></li> <!-- ABOUT US -->
+      </ul> 
+
+      <ul class="nav navbar-nav navbar-right">
+      <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search...">
+          </div>
+          <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="You can search books, authors or something else">Search</button>
+      </form>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,91 @@
+<div class="container main-body">
+  <div class="col-md-2 main-body-left">
+    <%= render "shared/leftbar" %>
+  </div>
+
+  <div class="col-md-10 main-body-right">
+    <ol class="breadcrumb">
+      <li><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%= link_to " Home", root_path%></li>
+      <li class="active"><%= link_to Category.find(@book.category_id).name, @book.category %>
+      <li class="active"><%= link_to @book.name %></li>
+    </ol>
+
+    <div class="row show-info-above">
+      <div class="col-md-4 show-info-above-left">
+        <%= image_tag(@book.image, alt: "image") %>
+        <a class="btn btn-danger btn-download" href="#" role="button">Download</a>
+      </div>
+      <div class="col-md-8 show-info-above-right">
+        <div class="show-info-above-right-title"><%= @book.name %></div>  
+        <div class="col-md-7 show-info-above-right-info">
+          <div class="col-md-4">
+            <p>Year:</p>
+            <p>Pages:</p>
+            <p>Language:</p>
+            <p>File size:</p>
+            <p>File format:</p>
+          </div>
+          <div class="col-md-8">
+            <p><%= @book.year %></p>
+            <p><%= @book.pages %></p>
+            <p><%= @book.language %></p>
+            <p><%= @book.file_size %> MB</p>
+            <p><%= @book.file_format %></p>
+          </div>
+          <div class="col-md-12">
+            <div class="sub-books-rating">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="row show-info-above-right-author">
+            <%= image_tag(Author.find(@book.author_id).avatar, alt: "image", class: "img-circle") %>
+            <p class="title"><%= Author.find(@book.author_id).name %></p>
+            <div class="col-md-12 info">
+                <p>Nationality: <%= Author.find(@book.author_id).nationality %></p>
+                <p>Year:  <%= Author.find(@book.author_id).year %></p>
+                <p>Follower:  <%= Author.find(@book.author_id).follower %></p>
+            </div>
+            <div class="col-md-12">
+              <button type="button" class="btn btn-success">Follow</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row show-info-below">
+      <div class="categories-title"><p>Information</p></div>
+      <div class="col-md-12 show-info-below-info">
+        <p><%= @book.description %></p>
+      </div>
+      <div class="row main-body-right-sub-area-1">
+        <div class="col-md-12">
+          <div class="categories-title"><p>Related eBooks</p></div>
+        </div>
+        <% @books.each do |book| %>
+          <div class="col-md-3">
+            <div class="sub-books">
+              <%= link_to image_tag(book.image, alt:"image"), book %>
+              <p><%= book.name %></p>
+              <div class="sub-books-rating">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+              </div>
+              <a class="btn btn-danger btn-download" href="#" role="button">Download</a>
+            </div>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

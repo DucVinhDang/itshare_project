@@ -1,0 +1,19 @@
+<div class="categories-title"><p>Categories</p></div>
+<div class="list-group categories-body">
+	<!-- <%- model_class = Category -%>
+	<% @categories.each do |category| 
+		if category.name == "Home" %>
+		<%= link_to "Home", root_path, class: "list-group-item" %>
+		<% else %>
+	    		<%= link_to category.name, root_path, class: "list-group-item" %>
+	   	<% end %>
+	<% end %> -->
+	<%= link_to "Home", root_path, class: "list-group-item" %> <!-- HOME -->
+	<%= link_to "Menu", categories_path, class: "list-group-item" %>
+  	<%= link_to "New eBooks", "/new_ebooks", class: "list-group-item" %> <!-- NEW EBOOKS -->
+  	<%= link_to "Popular eBooks", "/popular_ebooks", class: "list-group-item" %>
+  	<%= link_to "Last Update", root_path, class: "list-group-item" %> <!-- LAST UPDATE -->
+  	<%= link_to "Feedback", root_path, class: "list-group-item" %> <!-- FEEDBACK -->
+  	<%= link_to "About Us", root_path, class: "list-group-item" %> <!-- ABOUT US -->
+
+</div>
